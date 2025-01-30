@@ -40,13 +40,13 @@ public class ScoreService {
 		Score score = new Score();
 		score.setMovie(movie);
 		score.setUser(user);
-		score.setValue(dto.getScore());
+		score.setRating(dto.getScore());
 		
 		score = scoreRepository.saveAndFlush(score);
 		
 		double sum = 0.0;
 		for (Score s : movie.getScores()) {
-			sum = sum + s.getValue();
+			sum = sum + s.getRating();
 		}
 			
 		double avg = sum / movie.getScores().size();
